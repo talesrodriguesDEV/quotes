@@ -4,9 +4,9 @@ const add = async (newQuote) => QuoteModel.create(newQuote)
 
 const list = async () => QuoteModel.find()
 
-const update = async (id, updatedQuote) => QuoteModel.create(id, updatedQuote)
+const update = async (id, updatedQuote) => QuoteModel.updateOne({ id }, updatedQuote)
 
-const remove = async (id) => QuoteModel.create(id)
+const remove = async (id) => QuoteModel.deleteOne({ id })
 
 module.exports = Object.freeze({
   add,
@@ -14,5 +14,3 @@ module.exports = Object.freeze({
   update,
   remove
 })
-
-// Fixing last commit
