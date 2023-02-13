@@ -1,10 +1,18 @@
-// const Quote = require('../Quote')
+const Quote = require('../Quote')
 
-// module.exports = async function updatedQuote ({ id, text, author }, databaseHandler) {
-//   const updates = { updatedAt: new Date() }
+const getQuoteById = require('./getQuoteById')
 
-//   if (text) updates.text = text
-//   if (author) updates.author = author
+module.exports = async function updatedQuote (id, { text, author }, databaseHandler) {
+  const quote = await getQuoteById(id, databaseHandler)
 
-//   await databaseHandler.update(id, updates)
-// }
+  quote.updatedAt = new Date()
+
+  if (text) {
+    quote.text = text
+    quote.length = text.length
+  }
+  if (author) quote.author = author
+
+  const validQuote = Quote(quote)
+  await databaseHandler.update(id, validQuote)
+}

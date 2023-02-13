@@ -11,6 +11,7 @@ const quoteDbHandler = require('./database/quoteDbHandler')
 const addQuote = require('./use-cases/addQuote')
 const getQuoteById = require('./use-cases/getQuoteById')
 const listQuotes = require('./use-cases/listQuotes')
+const updateQuote = require('./use-cases/updateQuote')
 
 server.get('/', async (req, res) => {
   const x = await listQuotes(quoteDbHandler)
@@ -32,4 +33,15 @@ server.get('/:id', async (req, res) => {
   const x = await getQuoteById(id, quoteDbHandler)
 
   res.status(200).json(x)
+})
+
+server.put('/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    await updateQuote(id, req.body, quoteDbHandler)
+    res.end()
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
 })
