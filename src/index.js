@@ -9,9 +9,10 @@ connectDB()
 // ### Testing below ###
 const quoteDbHandler = require('./database/quoteDbHandler')
 const addQuote = require('./use-cases/addQuote')
+const listQuotes = require('./use-cases/listQuotes')
 
 server.get('/', async (req, res) => {
-  const x = await quoteDbHandler.list()
+  const x = await listQuotes(quoteDbHandler)
   res.json(x)
 })
 
