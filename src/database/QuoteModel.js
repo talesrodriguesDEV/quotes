@@ -12,3 +12,5 @@ const quoteSchema = new Schema({
 const QuoteModel = model('Quote', quoteSchema)
 
 module.exports = QuoteModel
+
+// Fixing last commit
