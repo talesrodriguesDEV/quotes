@@ -9,6 +9,7 @@ connectDB()
 // ### Testing below ###
 const quoteDbHandler = require('./database/quoteDbHandler')
 const addQuote = require('./use-cases/addQuote')
+const deleteQuote = require('./use-cases/deleteQuote')
 const getQuoteById = require('./use-cases/getQuoteById')
 const listQuotes = require('./use-cases/listQuotes')
 const updateQuote = require('./use-cases/updateQuote')
@@ -44,4 +45,12 @@ server.put('/:id', async (req, res) => {
   } catch (error) {
     res.status(400).json(error.message)
   }
+})
+
+server.delete('/:id', async (req, res) => {
+  const { id } = req.params
+
+  await deleteQuote(id, quoteDbHandler)
+
+  res.end()
 })
