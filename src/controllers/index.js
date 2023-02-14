@@ -7,21 +7,21 @@ const filterQuote = require('../use-cases/filterQuote')
 const { randomUUID } = require('crypto')
 
 async function getController (req, res) {
-  const x = await listQuotes(req.quoteDbHandler)
-  res.json(x)
+  const quotes = await listQuotes(req.quoteDbHandler)
+  res.json({ quotes })
 }
 
 async function postController (req, res) {
   try {
-    const quote = await filterQuote(req.text, req.quoteDbHandler)
-    if (!quote) throw new Error('Quote already exists.')
+    const quote = await filterQuote(req.body.text, req.quoteDbHandler)
+    if (quote) throw new Error('Quote already exists.')
 
     req.body.id = randomUUID()
     await addQuote(req.body, req.quoteDbHandler)
 
-    return res.status(201).end()
-  } catch (error) {
-    return res.status(400).json(error.message)
+    return res.status(201).json({ message: 'Quote added successfully.' })
+  } catch ({ message }) {
+    return res.status(400).json({ message })
   }
 }
 
@@ -30,9 +30,9 @@ async function putController (req, res) {
 
   try {
     await updateQuote(id, req.body, req.quoteDbHandler)
-    return res.end()
-  } catch (error) {
-    return res.status(400).json(error.message)
+    return res.json({ message: 'Quote updated successfully.' })
+  } catch ({ message }) {
+    return res.status(400).json({ message })
   }
 }
 
@@ -41,7 +41,7 @@ async function deleteController (req, res) {
 
   await deleteQuote(id, req.quoteDbHandler)
 
-  return res.end()
+  return res.json({ message: 'Quote deleted successfully.' })
 }
 
 module.exports = {
