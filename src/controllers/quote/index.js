@@ -1,8 +1,8 @@
-const addQuote = require('../use-cases/addQuote')
-const deleteQuote = require('../use-cases/deleteQuote')
-const listQuotes = require('../use-cases/listQuotes')
-const updateQuote = require('../use-cases/updateQuote')
-const filterQuote = require('../use-cases/filterQuote')
+const addQuote = require('../../use-cases/quote/addQuote')
+const deleteQuote = require('../../use-cases/quote/deleteQuote')
+const listQuotes = require('../../use-cases/quote/listQuotes')
+const updateQuote = require('../../use-cases/quote/updateQuote')
+const filterQuote = require('../../use-cases/quote/filterQuote')
 
 const { randomUUID } = require('crypto')
 

@@ -1,4 +1,4 @@
-const Quote = require('../Quote')
+const Quote = require('../../entities/Quote')
 
 const getQuoteById = require('./getQuoteById')
 

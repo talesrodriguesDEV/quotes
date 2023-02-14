@@ -1,4 +1,4 @@
-const Quote = require('../Quote')
+const Quote = require('../../entities/Quote')
 
 module.exports = async function addQuote ({ id, text, author }, databaseHandler) {
   const rawQuote = {
