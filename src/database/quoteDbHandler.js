@@ -10,10 +10,13 @@ const remove = async (id) => QuoteModel.deleteOne({ id })
 
 const getById = async (id) => QuoteModel.findOne({ id })
 
+const filter = async (text) => QuoteModel.findOne({ text })
+
 module.exports = Object.freeze({
   add,
   list,
   update,
   remove,
-  getById
+  getById,
+  filter
 })
