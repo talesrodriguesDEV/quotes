@@ -1,3 +1,3 @@
-module.exports = async function filterAuthor (name, databaseHandler) {
-  return await databaseHandler.filter(name)
+module.exports = async function filterAuthor (name, authorDbHandler) {
+  return await authorDbHandler.filter(name)
 }

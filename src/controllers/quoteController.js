@@ -1,17 +1,17 @@
-const addQuote = require('../../use-cases/quote/addQuote')
-const deleteQuote = require('../../use-cases/quote/deleteQuote')
-const listQuotes = require('../../use-cases/quote/listQuotes')
-const updateQuote = require('../../use-cases/quote/updateQuote')
+const listQuotes = require('../use-cases/quote/listQuotes')
+const addQuote = require('../use-cases/quote/addQuote')
+const updateQuote = require('../use-cases/quote/updateQuote')
+const removeQuote = require('../use-cases/quote/removeQuote')
 
 const { randomUUID } = require('crypto')
 
-async function getController (req, res) {
+async function getQuote (req, res) {
   const quotes = await listQuotes(req.quoteDbHandler)
 
   res.json({ quotes })
 }
 
-async function postController (req, res) {
+async function postQuote (req, res) {
   try {
     req.body.id = randomUUID()
     await addQuote(req.body, req.quoteDbHandler, req.authorDbHandler)
@@ -22,7 +22,7 @@ async function postController (req, res) {
   }
 }
 
-async function putController (req, res) {
+async function putQuote (req, res) {
   const { id } = req.params
 
   try {
@@ -37,11 +37,11 @@ async function putController (req, res) {
   }
 }
 
-async function deleteController (req, res) {
+async function deleteQuote (req, res) {
   const { id } = req.params
 
   try {
-    await deleteQuote(id, req.quoteDbHandler)
+    await removeQuote(id, req.quoteDbHandler)
 
     return res.json({ message: 'Quote deleted successfully.' })
   } catch ({ status, message }) {
@@ -53,8 +53,8 @@ async function deleteController (req, res) {
 }
 
 module.exports = {
-  getController,
-  postController,
-  putController,
-  deleteController
+  getQuote,
+  postQuote,
+  putQuote,
+  deleteQuote
 }

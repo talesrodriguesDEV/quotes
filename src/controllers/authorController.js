@@ -1,17 +1,17 @@
-const listAuthors = require('../../use-cases/author/listAuthors')
-const addAuthor = require('../../use-cases/author/addAuthor')
-const updateAuthor = require('../../use-cases/author/updateAuthor')
-const deleteAuthor = require('../../use-cases/author/deleteAuthor')
+const listAuthors = require('../use-cases/author/listAuthors')
+const addAuthor = require('../use-cases/author/addAuthor')
+const updateAuthor = require('../use-cases/author/updateAuthor')
+const removeAuthor = require('../use-cases/author/removeAuthor')
 
 const { randomUUID } = require('crypto')
 
-async function getController (req, res) {
+async function getAuthor (req, res) {
   const authors = await listAuthors(req.authorDbHandler)
 
   res.json({ authors })
 }
 
-async function postController (req, res) {
+async function postAuthor (req, res) {
   try {
     req.body.id = randomUUID()
     await addAuthor(req.body, req.authorDbHandler)
@@ -22,7 +22,7 @@ async function postController (req, res) {
   }
 }
 
-async function putController (req, res) {
+async function putAuthor (req, res) {
   const { id } = req.params
 
   try {
@@ -37,11 +37,11 @@ async function putController (req, res) {
   }
 }
 
-async function deleteController (req, res) {
+async function deleteAuthor (req, res) {
   const { id } = req.params
 
   try {
-    await deleteAuthor(id, req.authorDbHandler, req.quoteDbHandler)
+    await removeAuthor(id, req.authorDbHandler, req.quoteDbHandler)
 
     return res.json({ message: 'Author deleted successfully.' })
   } catch ({ status, message }) {
@@ -53,8 +53,8 @@ async function deleteController (req, res) {
 }
 
 module.exports = {
-  getController,
-  postController,
-  putController,
-  deleteController
+  getAuthor,
+  postAuthor,
+  putAuthor,
+  deleteAuthor
 }

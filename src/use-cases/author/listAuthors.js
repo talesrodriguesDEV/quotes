@@ -1,3 +1,3 @@
-module.exports = async function listAuthors (databaseHandler) {
-  return await databaseHandler.list()
+module.exports = async function listAuthors (authorDbHandler) {
+  return await authorDbHandler.list()
 }

@@ -1,5 +1,5 @@
-const quoteDbHandler = require('../database/quote/quoteDbHandler')
-const authorDbHandler = require('../database/author/authorDbHandler')
+const quoteDbHandler = require('../database/quoteDbHandler')
+const authorDbHandler = require('../database/authorDbHandler')
 
 module.exports = function dbHandler (req, _res, next) {
   req.quoteDbHandler = quoteDbHandler

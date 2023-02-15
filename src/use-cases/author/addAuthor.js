@@ -2,8 +2,8 @@ const Author = require('../../entities/Author')
 
 const filterAuthor = require('./filterAuthor')
 
-module.exports = async function addAuthor ({ id, name, age, country }, databaseHandler) {
-  const author = await filterAuthor(name, databaseHandler)
+module.exports = async function addAuthor ({ id, name, age, country }, authorDbHandler) {
+  const author = await filterAuthor(name, authorDbHandler)
   if (author) throw new Error('Author already exists.')
 
   const rawAuthor = {
@@ -17,5 +17,5 @@ module.exports = async function addAuthor ({ id, name, age, country }, databaseH
 
   const validAuthor = Author(rawAuthor)
 
-  await databaseHandler.add(validAuthor)
+  await authorDbHandler.add(validAuthor)
 }

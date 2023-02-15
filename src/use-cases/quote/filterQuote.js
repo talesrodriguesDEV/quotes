@@ -1,3 +1,3 @@
-module.exports = async function filterQuote (text, databaseHandler) {
-  return await databaseHandler.filter(text)
+module.exports = async function filterQuote (text, quoteDbHandler) {
+  return await quoteDbHandler.filter(text)
 }

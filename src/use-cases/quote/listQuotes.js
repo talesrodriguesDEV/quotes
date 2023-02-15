@@ -1,3 +1,3 @@
-module.exports = async function listQuotes (databaseHandler) {
-  return await databaseHandler.list()
+module.exports = async function listQuotes (quoteDbHandler) {
+  return await quoteDbHandler.list()
 }

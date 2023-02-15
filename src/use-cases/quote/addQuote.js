@@ -1,6 +1,7 @@
 const Quote = require('../../entities/Quote')
 
 const filterQuote = require('./filterQuote')
+
 const filterAuthor = require('../author/filterAuthor')
 
 module.exports = async function addQuote ({ id, text, author }, quoteDbHandler, authorDbHandler) {
