@@ -1,4 +1,4 @@
-module.exports = function age ({ id, name, age, country, createdAt, updatedAt }) {
+module.exports = ({ id, name, age, country, createdAt, updatedAt }) => {
   const missingInfo = !id || !name || !age || !country || !createdAt || !updatedAt
   if (missingInfo) throw new Error('Some author info is missing.')
 

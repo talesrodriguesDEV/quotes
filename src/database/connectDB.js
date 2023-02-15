@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const MONGO_PORT = 27017
 
-function connectDB () {
+module.exports = () => {
   mongoose.set('strictQuery', false)
 
   mongoose.connect(`mongodb://mongo:${MONGO_PORT}`, { user: 'root', pass: 'example' })
@@ -11,5 +11,3 @@ function connectDB () {
   db.once('open', () => console.log('Database connected.'))
   db.on('error', (err) => console.log(err))
 }
-
-module.exports = connectDB

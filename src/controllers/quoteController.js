@@ -5,13 +5,13 @@ const removeQuote = require('../use-cases/quote/removeQuote')
 
 const { randomUUID } = require('crypto')
 
-async function getQuote (req, res) {
+const getQuote = async (req, res) => {
   const quotes = await listQuotes(req.quoteDbHandler)
 
   res.json({ quotes })
 }
 
-async function postQuote (req, res) {
+const postQuote = async (req, res) => {
   try {
     req.body.id = randomUUID()
     await addQuote(req.body, req.quoteDbHandler, req.authorDbHandler)
@@ -22,7 +22,7 @@ async function postQuote (req, res) {
   }
 }
 
-async function putQuote (req, res) {
+const putQuote = async (req, res) => {
   const { id } = req.params
 
   try {
@@ -37,7 +37,7 @@ async function putQuote (req, res) {
   }
 }
 
-async function deleteQuote (req, res) {
+const deleteQuote = async (req, res) => {
   const { id } = req.params
 
   try {

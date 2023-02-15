@@ -1,3 +1,1 @@
-module.exports = async function removeQuotesByAuthor (author, quoteDbHandler) {
-  await quoteDbHandler.removeByAuthor(author)
-}
+module.exports = async (author, quoteDbHandler) => quoteDbHandler.removeByAuthor(author)

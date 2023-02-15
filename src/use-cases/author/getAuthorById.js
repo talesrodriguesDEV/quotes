@@ -1,4 +1,4 @@
-module.exports = async function getAuthorById (id, authorDbHandler) {
+module.exports = async (id, authorDbHandler) => {
   const author = await authorDbHandler.getById(id)
 
   // eslint-disable-next-line no-throw-literal

@@ -4,9 +4,11 @@ const getAuthorById = require('./getAuthorById')
 
 const updateQuotesAuthor = require('../quote/updateQuotesAuthor')
 
-module.exports = async function updateQuote (id, { name, age, country }, authorDbHandler, quoteDbHandler) {
+module.exports = async (id, { name, age, country }, authorDbHandler, quoteDbHandler) => {
   const author = await getAuthorById(id, authorDbHandler)
   const previousAuthorName = author.name
+
+  if (!name && !age && !country) throw new Error('No author info was provided.')
 
   if (name) author.name = name
   if (age) author.age = age

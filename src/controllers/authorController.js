@@ -5,13 +5,13 @@ const removeAuthor = require('../use-cases/author/removeAuthor')
 
 const { randomUUID } = require('crypto')
 
-async function getAuthor (req, res) {
+const getAuthor = async (req, res) => {
   const authors = await listAuthors(req.authorDbHandler)
 
   res.json({ authors })
 }
 
-async function postAuthor (req, res) {
+const postAuthor = async (req, res) => {
   try {
     req.body.id = randomUUID()
     await addAuthor(req.body, req.authorDbHandler)
@@ -22,7 +22,7 @@ async function postAuthor (req, res) {
   }
 }
 
-async function putAuthor (req, res) {
+const putAuthor = async (req, res) => {
   const { id } = req.params
 
   try {
@@ -37,7 +37,7 @@ async function putAuthor (req, res) {
   }
 }
 
-async function deleteAuthor (req, res) {
+const deleteAuthor = async (req, res) => {
   const { id } = req.params
 
   try {

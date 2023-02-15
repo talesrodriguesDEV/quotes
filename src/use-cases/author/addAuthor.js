@@ -2,7 +2,7 @@ const Author = require('../../entities/Author')
 
 const filterAuthor = require('./filterAuthor')
 
-module.exports = async function addAuthor ({ id, name, age, country }, authorDbHandler) {
+module.exports = async ({ id, name, age, country }, authorDbHandler) => {
   const author = await filterAuthor(name, authorDbHandler)
   if (author) throw new Error('Author already exists.')
 

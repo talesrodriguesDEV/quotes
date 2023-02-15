@@ -1,4 +1,4 @@
-module.exports = function Quote ({ id, text, author, length, createdAt, updatedAt }) {
+module.exports = ({ id, text, author, length, createdAt, updatedAt }) => {
   const missingInfo = !id || !text || !author || !length || !createdAt || !updatedAt
   if (missingInfo) throw new Error('Some quote info is missing.')
 

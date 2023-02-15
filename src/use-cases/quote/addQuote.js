@@ -4,7 +4,7 @@ const filterQuote = require('./filterQuote')
 
 const filterAuthor = require('../author/filterAuthor')
 
-module.exports = async function addQuote ({ id, text, author }, quoteDbHandler, authorDbHandler) {
+module.exports = async ({ id, text, author }, quoteDbHandler, authorDbHandler) => {
   const quote = await filterQuote(text, quoteDbHandler)
   if (quote) throw new Error('Quote already exists.')
 

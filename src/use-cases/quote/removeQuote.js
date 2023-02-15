@@ -1,6 +1,6 @@
 const getQuoteById = require('./getQuoteById')
 
-module.exports = async function removeQuote (id, quoteDbHandler) {
+module.exports = async (id, quoteDbHandler) => {
   await getQuoteById(id, quoteDbHandler)
   await quoteDbHandler.remove(id)
 }

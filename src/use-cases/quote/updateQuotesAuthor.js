@@ -1,3 +1,1 @@
-module.exports = async function updateQuotesAuthor (previousAuthor, updatedAuthor, quoteDbHandler) {
-  await quoteDbHandler.updateQuotesAuthor(previousAuthor, updatedAuthor)
-}
+module.exports = async (previousAuthor, updatedAuthor, quoteDbHandler) => quoteDbHandler.updateQuotesAuthor(previousAuthor, updatedAuthor)
