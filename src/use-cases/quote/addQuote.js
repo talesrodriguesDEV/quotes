@@ -1,12 +1,15 @@
 const Quote = require('../../entities/Quote')
 
 const filterQuote = require('./filterQuote')
+const filterAuthor = require('../author/filterAuthor')
 
-module.exports = async function addQuote ({ id, text, author }, databaseHandler) {
-  const quote = await filterQuote(text, databaseHandler)
+module.exports = async function addQuote ({ id, text, author }, quoteDbHandler, authorDbHandler) {
+  const quote = await filterQuote(text, quoteDbHandler)
   if (quote) throw new Error('Quote already exists.')
 
-  // validate author
+  const authorExists = await filterAuthor(author, authorDbHandler)
+
+  if (!authorExists) throw new Error('Author doesn\'t exist.')
 
   const rawQuote = {
     id,
@@ -19,5 +22,5 @@ module.exports = async function addQuote ({ id, text, author }, databaseHandler)
 
   const validQuote = Quote(rawQuote)
 
-  await databaseHandler.add(validQuote)
+  await quoteDbHandler.add(validQuote)
 }

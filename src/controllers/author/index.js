@@ -26,7 +26,7 @@ async function putController (req, res) {
   const { id } = req.params
 
   try {
-    await updateAuthor(id, req.body, req.authorDbHandler)
+    await updateAuthor(id, req.body, req.authorDbHandler, req.quoteDbHandler)
 
     return res.json({ message: 'Author updated successfully.' })
   } catch ({ status, message }) {
@@ -41,7 +41,7 @@ async function deleteController (req, res) {
   const { id } = req.params
 
   try {
-    await deleteAuthor(id, req.authorDbHandler)
+    await deleteAuthor(id, req.authorDbHandler, req.quoteDbHandler)
 
     return res.json({ message: 'Author deleted successfully.' })
   } catch ({ status, message }) {

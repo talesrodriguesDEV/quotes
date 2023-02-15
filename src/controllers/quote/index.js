@@ -14,7 +14,7 @@ async function getController (req, res) {
 async function postController (req, res) {
   try {
     req.body.id = randomUUID()
-    await addQuote(req.body, req.quoteDbHandler)
+    await addQuote(req.body, req.quoteDbHandler, req.authorDbHandler)
 
     return res.status(201).json({ message: 'Quote added successfully.' })
   } catch ({ message }) {

@@ -1,7 +1,11 @@
 const getAuthorById = require('./getAuthorById')
 
-module.exports = async function deleteAuthor (id, databaseHandler) {
-  await getAuthorById(id, databaseHandler)
+const deleleteQuotesByAuthor = require('../quote/deleteQuotesByAuthor')
 
-  return await databaseHandler.remove(id)
+module.exports = async function deleteAuthor (id, authorDbHandler, quoteDbHandler) {
+  const { name } = await getAuthorById(id, authorDbHandler)
+
+  await deleleteQuotesByAuthor(name, quoteDbHandler)
+
+  return await authorDbHandler.remove(id)
 }

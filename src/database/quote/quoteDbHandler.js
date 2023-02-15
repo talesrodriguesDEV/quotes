@@ -12,11 +12,17 @@ const getById = async (id) => QuoteModel.findOne({ id })
 
 const filter = async (text) => QuoteModel.findOne({ text })
 
+const removeByAuthor = async (author) => QuoteModel.deleteMany({ author })
+
+const updateQuotesAuthor = async (previousAuthor, updatedAuthor) => QuoteModel.updateMany({ author: previousAuthor }, { author: updatedAuthor })
+
 module.exports = Object.freeze({
   add,
   list,
   update,
   remove,
   getById,
-  filter
+  filter,
+  removeByAuthor,
+  updateQuotesAuthor
 })
