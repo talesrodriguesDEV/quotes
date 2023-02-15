@@ -1,5 +1,7 @@
 const express = require('express')
+
 const dbHandler = require('./middlewares/dbHandler')
+const errorHandler = require('./middlewares/errorHandler')
 
 const server = express()
 
@@ -13,7 +15,7 @@ server.post('/', postController)
 server.put('/:id', putController)
 server.delete('/:id', deleteController)
 
-server.use(({ message }, req, res, next) => res.status(500).json({ message }))
+server.use(errorHandler)
 
 server.listen(3001, console.log('Server running.'))
 
