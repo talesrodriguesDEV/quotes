@@ -1,5 +1,5 @@
-const removeAuthor = require('../src/use-cases/author/removeAuthor')
-const { authorMock, authorDbHandlerMock, quoteDbHandlerMock } = require('./mock')
+const removeAuthor = require('../../src/use-cases/author/removeAuthor')
+const { authorMock, authorDbHandlerMock, quoteDbHandlerMock } = require('../mock')
 
 describe('Testing removeAuthor use case', () => {
   it('should remove author successfully', async () => {

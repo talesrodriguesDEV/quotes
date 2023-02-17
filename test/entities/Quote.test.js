@@ -1,4 +1,4 @@
-const Quote = require('../src/entities/Quote')
+const Quote = require('../../src/entities/Quote')
 
 const mockQuote = { id: '1', text: 'What a great text!', author: 'author', length: 18, createdAt: new Date(), updatedAt: new Date() }
 

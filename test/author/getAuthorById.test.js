@@ -1,5 +1,5 @@
-const getAuthorById = require('../src/use-cases/author/getAuthorById')
-const { authorInfoMock, authorMock, authorDbHandlerMock } = require('./mock')
+const getAuthorById = require('../../src/use-cases/author/getAuthorById')
+const { authorInfoMock, authorMock, authorDbHandlerMock } = require('../mock')
 
 describe('Testing getAuthorById use case', () => {
   it('should get author successfully', async () => {

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/server.js",
+  "jest": {
+    "coverageDirectory": "./coverage"
+  },
   "scripts": {
     "dev": "nodemon .",
-    "test": "jest"
+    "test": "jest --coverage --collectCoverageFrom='./src/**'"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-const Author = require('../src/entities/Author')
+const Author = require('../../src/entities/Author')
 
 const mockAuthor = { id: '1', name: 'name', age: 21, country: 'country', createdAt: new Date(), updatedAt: new Date() }
 

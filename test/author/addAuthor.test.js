@@ -1,9 +1,9 @@
-const addAuthor = require('../src/use-cases/author/addAuthor')
-const { authorInfoMock, authorDbHandlerMock } = require('./mock')
+const addAuthor = require('../../src/use-cases/author/addAuthor')
+const { authorInfoMock, authorDbHandlerMock } = require('../mock')
 
 describe('Testing addAuthor use case', () => {
   it('should add an author successfully', async () => {
-    authorDbHandlerMock.filter = jest.fn().mockImplementation(() => false)
+    authorDbHandlerMock.filter = jest.fn().mockImplementation(() => null)
 
     await addAuthor(authorInfoMock, authorDbHandlerMock)
 
