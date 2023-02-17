@@ -1,22 +1,22 @@
 const getAuthorById = require('../src/use-cases/author/getAuthorById')
-const { authorInfoMock, authorMock, dbHandlerMock } = require('./mock')
+const { authorInfoMock, authorMock, authorDbHandlerMock } = require('./mock')
 
 describe('Testing getAuthorById use case', () => {
   it('should get author successfully', async () => {
-    dbHandlerMock.getById = jest.fn().mockImplementation(() => authorMock)
+    authorDbHandlerMock.getById = jest.fn().mockImplementation(() => authorMock)
 
-    const author = await getAuthorById(authorInfoMock.id, dbHandlerMock)
+    const author = await getAuthorById(authorInfoMock.id, authorDbHandlerMock)
 
-    expect(dbHandlerMock.getById).toHaveBeenCalledWith(authorInfoMock.id)
+    expect(authorDbHandlerMock.getById).toHaveBeenCalledWith(authorInfoMock.id)
     expect(author).toEqual(authorMock)
   })
 
   it('should throw an Error if author is not found', async () => {
-    dbHandlerMock.getById = jest.fn().mockImplementation(() => null)
+    authorDbHandlerMock.getById = jest.fn().mockImplementation(() => null)
 
     let error
     try {
-      await getAuthorById(authorInfoMock.id, dbHandlerMock)
+      await getAuthorById(authorInfoMock.id, authorDbHandlerMock)
     } catch (err) {
       error = err
     }

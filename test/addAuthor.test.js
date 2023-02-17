@@ -1,11 +1,11 @@
 const addAuthor = require('../src/use-cases/author/addAuthor')
-const { authorInfoMock, dbHandlerMock } = require('./mock')
+const { authorInfoMock, authorDbHandlerMock } = require('./mock')
 
 describe('Testing addAuthor use case', () => {
   it('should add an author successfully', async () => {
-    dbHandlerMock.filter = jest.fn().mockImplementation(() => false)
+    authorDbHandlerMock.filter = jest.fn().mockImplementation(() => false)
 
-    await addAuthor(authorInfoMock, dbHandlerMock)
+    await addAuthor(authorInfoMock, authorDbHandlerMock)
 
     const mockAuthorObject = {
       ...authorInfoMock,
@@ -13,12 +13,12 @@ describe('Testing addAuthor use case', () => {
       updatedAt: new Date()
     }
 
-    expect(dbHandlerMock.add).toHaveBeenCalledWith(mockAuthorObject)
+    expect(authorDbHandlerMock.add).toHaveBeenCalledWith(mockAuthorObject)
   })
 
   it('should throw an Error if author already exists', () => {
-    dbHandlerMock.filter = jest.fn().mockImplementation(() => true)
+    authorDbHandlerMock.filter = jest.fn().mockImplementation(() => true)
 
-    expect(addAuthor(authorInfoMock, dbHandlerMock)).rejects.toThrow('Author already exists.')
+    expect(addAuthor(authorInfoMock, authorDbHandlerMock)).rejects.toThrow('Author already exists.')
   })
 })

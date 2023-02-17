@@ -1,10 +1,16 @@
-const dbHandlerMock = {
+const authorDbHandlerMock = {
   add: jest.fn(),
   list: jest.fn(),
   update: jest.fn(),
   remove: jest.fn(),
   getById: jest.fn(),
   filter: jest.fn()
+}
+
+const quoteDbHandlerMock = {
+  ...authorDbHandlerMock,
+  removeByAuthor: jest.fn(),
+  updateQuotesAuthor: jest.fn()
 }
 
 const authorInfoMock = {
@@ -33,8 +39,9 @@ const authorsMock = [
 ]
 
 module.exports = {
-  dbHandlerMock,
+  authorDbHandlerMock,
   authorInfoMock,
   authorMock,
-  authorsMock
+  authorsMock,
+  quoteDbHandlerMock
 }

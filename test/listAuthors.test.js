@@ -1,11 +1,11 @@
 const listAuthors = require('../src/use-cases/author/listAuthors')
-const { authorsMock, dbHandlerMock } = require('./mock')
+const { authorsMock, authorDbHandlerMock } = require('./mock')
 
 describe('Testing listAuthors use case', () => {
   it('should list authors successfully', async () => {
-    dbHandlerMock.list = jest.fn().mockImplementation(() => authorsMock)
+    authorDbHandlerMock.list = jest.fn().mockImplementation(() => authorsMock)
 
-    const authors = await listAuthors(dbHandlerMock)
+    const authors = await listAuthors(authorDbHandlerMock)
 
     expect(authors).toEqual(authorsMock)
   })
