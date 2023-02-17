@@ -1,7 +1,7 @@
 const addAuthor = require('../src/use-cases/author/addAuthor')
 const { authorInfoMock, dbHandlerMock } = require('./mock')
 
-describe('Testing add author use case', () => {
+describe('Testing addAuthor use case', () => {
   it('should add an author successfully', async () => {
     dbHandlerMock.filter = jest.fn().mockImplementation(() => false)
 

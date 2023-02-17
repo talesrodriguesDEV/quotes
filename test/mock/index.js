@@ -5,6 +5,12 @@ const authorInfoMock = {
   country: 'USA'
 }
 
+const authorMock = {
+  ...authorInfoMock,
+  createdAt: new Date(),
+  updatedAt: new Date()
+}
+
 const dbHandlerMock = {
   add: jest.fn(),
   list: jest.fn(),
@@ -16,5 +22,6 @@ const dbHandlerMock = {
 
 module.exports = {
   authorInfoMock,
+  authorMock,
   dbHandlerMock
 }
