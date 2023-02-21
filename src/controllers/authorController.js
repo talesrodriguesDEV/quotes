@@ -5,50 +5,46 @@ const removeAuthor = require('../use-cases/author/removeAuthor')
 
 const { randomUUID } = require('crypto')
 
-const getAuthor = async (req, res) => {
+const getAuthor = async (req) => {
   const authors = await listAuthors(req.authorDbHandler)
 
-  res.json({ authors })
+  return { httpStatus: 200, json: authors }
 }
 
-const postAuthor = async (req, res) => {
+const postAuthor = async (req) => {
   try {
     req.body.id = randomUUID()
     await addAuthor(req.body, req.authorDbHandler)
 
-    return res.status(201).json({ message: 'Author added successfully.' })
+    return { httpStatus: 201, json: { message: 'Author added successfully.' } }
   } catch ({ message }) {
-    return res.status(400).json({ message })
+    return { httpStatus: 400, json: { message } }
   }
 }
 
-const putAuthor = async (req, res) => {
-  const { id } = req.params
-
+const putAuthor = async (req) => {
   try {
-    await updateAuthor(id, req.body, req.authorDbHandler, req.quoteDbHandler)
+    await updateAuthor(req.params.id, req.body, req.authorDbHandler, req.quoteDbHandler)
 
-    return res.json({ message: 'Author updated successfully.' })
+    return { httpStatus: 200, json: { message: 'Author updated successfully.' } }
   } catch ({ status, message }) {
     let code = 400
     if (status) code = status
 
-    return res.status(code).json({ message })
+    return { httpStatus: code, json: { message } }
   }
 }
 
-const deleteAuthor = async (req, res) => {
-  const { id } = req.params
-
+const deleteAuthor = async (req) => {
   try {
-    await removeAuthor(id, req.authorDbHandler, req.quoteDbHandler)
+    await removeAuthor(req.params.id, req.authorDbHandler, req.quoteDbHandler)
 
-    return res.json({ message: 'Author deleted successfully.' })
+    return { httpStatus: 200, json: { message: 'Author deleted successfully.' } }
   } catch ({ status, message }) {
     let code = 400
     if (status) code = status
 
-    return res.status(code).json({ message })
+    return { httpStatus: code, json: { message } }
   }
 }
 
