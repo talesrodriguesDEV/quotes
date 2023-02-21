@@ -1,5 +1,5 @@
-const updateAuthor = require('../../src/use-cases/author/updateAuthor')
-const { authorMock, authorDbHandlerMock, quoteDbHandlerMock } = require('../mock')
+const updateAuthor = require('../../../src/use-cases/author/updateAuthor')
+const { authorMock, authorDbHandlerMock, quoteDbHandlerMock } = require('../../mock')
 
 describe('Testing updateAuthor use case', () => {
   it('should update author successfully', async () => {

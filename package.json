@@ -4,11 +4,16 @@
   "description": "",
   "main": "./src/server.js",
   "jest": {
-    "coverageDirectory": "./coverage"
+    "coverageDirectory": "./coverage",
+    "collectCoverageFrom": [
+      "./src/entities/**",
+      "./src/use-cases/**",
+      "./src/controllers/**"
+    ]
   },
   "scripts": {
     "dev": "nodemon .",
-    "test": "jest --coverage --collectCoverageFrom='./src/**'"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",

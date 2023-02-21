@@ -1,5 +1,5 @@
-const removeQuote = require('../../src/use-cases/quote/removeQuote')
-const { quoteMock, quoteDbHandlerMock } = require('../mock')
+const removeQuote = require('../../../src/use-cases/quote/removeQuote')
+const { quoteMock, quoteDbHandlerMock } = require('../../mock')
 
 describe('Testing removeQuote use case', () => {
   it('should remove quote successfully', async () => {

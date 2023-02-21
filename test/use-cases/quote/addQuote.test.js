@@ -1,5 +1,5 @@
-const addQuote = require('../../src/use-cases/quote/addQuote')
-const { quoteDbHandlerMock, quoteInfoMock, authorDbHandlerMock, authorMock, quoteMock } = require('../mock')
+const addQuote = require('../../../src/use-cases/quote/addQuote')
+const { quoteDbHandlerMock, quoteInfoMock, authorDbHandlerMock, authorMock, quoteMock } = require('../../mock')
 
 describe('Testing addQuote use case', () => {
   it('should add a quote successfully', async () => {

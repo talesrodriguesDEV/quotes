@@ -1,5 +1,5 @@
-const updateQuote = require('../../src/use-cases/quote/updateQuote')
-const { quoteMock, quoteDbHandlerMock } = require('../mock')
+const updateQuote = require('../../../src/use-cases/quote/updateQuote')
+const { quoteMock, quoteDbHandlerMock } = require('../../mock')
 
 describe('Testing updateQuote use case', () => {
   it('should update quote successfully', async () => {

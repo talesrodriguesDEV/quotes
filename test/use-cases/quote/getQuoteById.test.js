@@ -1,5 +1,5 @@
-const getQuoteById = require('../../src/use-cases/quote/getQuoteById')
-const { quoteInfoMock, quoteMock, quoteDbHandlerMock } = require('../mock')
+const getQuoteById = require('../../../src/use-cases/quote/getQuoteById')
+const { quoteInfoMock, quoteMock, quoteDbHandlerMock } = require('../../mock')
 
 describe('Testing getQuoteById use case', () => {
   it('should get quote successfully', async () => {

@@ -1,5 +1,5 @@
-const listQuotes = require('../../src/use-cases/quote/listQuotes')
-const { quotesMock, quoteDbHandlerMock } = require('../mock')
+const listQuotes = require('../../../src/use-cases/quote/listQuotes')
+const { quotesMock, quoteDbHandlerMock } = require('../../mock')
 
 describe('Testing listQuotes use case', () => {
   it('should list quotes successfully', async () => {

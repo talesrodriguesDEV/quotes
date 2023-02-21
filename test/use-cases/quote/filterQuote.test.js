@@ -1,5 +1,5 @@
-const filterQuote = require('../../src/use-cases/quote/filterQuote')
-const { quoteInfoMock, quoteDbHandlerMock } = require('../mock')
+const filterQuote = require('../../../src/use-cases/quote/filterQuote')
+const { quoteInfoMock, quoteDbHandlerMock } = require('../../mock')
 
 describe('Testing filterQuote use case', () => {
   it('should filter quote successfully', async () => {

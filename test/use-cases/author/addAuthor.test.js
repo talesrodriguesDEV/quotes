@@ -1,5 +1,5 @@
-const addAuthor = require('../../src/use-cases/author/addAuthor')
-const { authorInfoMock, authorDbHandlerMock } = require('../mock')
+const addAuthor = require('../../../src/use-cases/author/addAuthor')
+const { authorInfoMock, authorDbHandlerMock } = require('../../mock')
 
 describe('Testing addAuthor use case', () => {
   it('should add an author successfully', async () => {
