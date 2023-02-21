@@ -4,7 +4,7 @@ This project is all about trying to apply Clean Architecture principles. It's a 
 
 ## Tests
 
-<img src="./tests.png" />
+<img src="./api-tests.png" />
 
 ## Setup
 
