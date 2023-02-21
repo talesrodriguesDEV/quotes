@@ -5,16 +5,16 @@ const removeQuote = require('../use-cases/quote/removeQuote')
 
 const { randomUUID } = require('crypto')
 
-const getQuote = async (req) => {
-  const quotes = await listQuotes(req.quoteDbHandler)
+const getQuote = async ({ quoteDbHandler }) => {
+  const quotes = await listQuotes(quoteDbHandler)
 
   return { httpStatus: 200, json: quotes }
 }
 
-const postQuote = async (req) => {
+const postQuote = async ({ body, quoteDbHandler, authorDbHandler }) => {
   try {
-    req.body.id = randomUUID()
-    await addQuote(req.body, req.quoteDbHandler, req.authorDbHandler)
+    body.id = randomUUID()
+    await addQuote(body, quoteDbHandler, authorDbHandler)
 
     return { httpStatus: 201, json: { message: 'Quote added successfully.' } }
   } catch ({ message }) {
@@ -22,11 +22,9 @@ const postQuote = async (req) => {
   }
 }
 
-const putQuote = async (req) => {
-  const { id } = req.params
-
+const putQuote = async ({ params, body, quoteDbHandler }) => {
   try {
-    await updateQuote(id, req.body, req.quoteDbHandler)
+    await updateQuote(params.id, body, quoteDbHandler)
 
     return { httpStatus: 200, json: { message: 'Quote updated successfully.' } }
   } catch ({ status, message }) {
@@ -37,11 +35,9 @@ const putQuote = async (req) => {
   }
 }
 
-const deleteQuote = async (req) => {
-  const { id } = req.params
-
+const deleteQuote = async ({ params, quoteDbHandler }) => {
   try {
-    await removeQuote(id, req.quoteDbHandler)
+    await removeQuote(params.id, quoteDbHandler)
 
     return { httpStatus: 200, json: { message: 'Quote deleted successfully.' } }
   } catch ({ status, message }) {

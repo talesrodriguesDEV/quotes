@@ -5,16 +5,16 @@ const removeAuthor = require('../use-cases/author/removeAuthor')
 
 const { randomUUID } = require('crypto')
 
-const getAuthor = async (req) => {
-  const authors = await listAuthors(req.authorDbHandler)
+const getAuthor = async ({ authorDbHandler }) => {
+  const authors = await listAuthors(authorDbHandler)
 
   return { httpStatus: 200, json: authors }
 }
 
-const postAuthor = async (req) => {
+const postAuthor = async ({ body, authorDbHandler }) => {
   try {
-    req.body.id = randomUUID()
-    await addAuthor(req.body, req.authorDbHandler)
+    body.id = randomUUID()
+    await addAuthor(body, authorDbHandler)
 
     return { httpStatus: 201, json: { message: 'Author added successfully.' } }
   } catch ({ message }) {
@@ -22,9 +22,9 @@ const postAuthor = async (req) => {
   }
 }
 
-const putAuthor = async (req) => {
+const putAuthor = async ({ params, body, authorDbHandler, quoteDbHandler }) => {
   try {
-    await updateAuthor(req.params.id, req.body, req.authorDbHandler, req.quoteDbHandler)
+    await updateAuthor(params.id, body, authorDbHandler, quoteDbHandler)
 
     return { httpStatus: 200, json: { message: 'Author updated successfully.' } }
   } catch ({ status, message }) {
@@ -35,9 +35,9 @@ const putAuthor = async (req) => {
   }
 }
 
-const deleteAuthor = async (req) => {
+const deleteAuthor = async ({ params, body, authorDbHandler, quoteDbHandler }) => {
   try {
-    await removeAuthor(req.params.id, req.authorDbHandler, req.quoteDbHandler)
+    await removeAuthor(params.id, authorDbHandler, quoteDbHandler)
 
     return { httpStatus: 200, json: { message: 'Author deleted successfully.' } }
   } catch ({ status, message }) {
