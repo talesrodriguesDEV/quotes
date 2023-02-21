@@ -63,6 +63,20 @@ const quotesMock = [
   }
 ]
 
+const authorReqMock = {
+  authorDbHandler: authorDbHandlerMock,
+  quoteDbHandler: quoteDbHandlerMock,
+  body: authorInfoMock,
+  params: { id: '000' }
+}
+
+const quoteReqMock = {
+  authorDbHandler: authorDbHandlerMock,
+  quoteDbHandler: quoteDbHandlerMock,
+  body: quoteInfoMock,
+  params: { id: '111' }
+}
+
 module.exports = {
   authorDbHandlerMock,
   authorInfoMock,
@@ -71,5 +85,7 @@ module.exports = {
   quoteDbHandlerMock,
   quoteInfoMock,
   quoteMock,
-  quotesMock
+  quotesMock,
+  authorReqMock,
+  quoteReqMock
 }
