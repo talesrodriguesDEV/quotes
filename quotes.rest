@@ -1,0 +1,24 @@
+GET http://localhost:3001/quote
+
+###
+
+POST http://localhost:3001/quote
+Content-Type: application/json
+
+{
+  "text": "Some nice quote!",
+  "author": "Joe Doe"
+}
+
+###
+
+PUT http://localhost:3001/quote/d7ae9c3e-6cd3-4fd7-9d59-be95233b3c31
+Content-Type: application/json
+
+{
+  "text": "Another awesome quote!"
+}
+
+###
+
+DELETE http://localhost:3001/quote/d7ae9c3e-6cd3-4fd7-9d59-be95233b3c31

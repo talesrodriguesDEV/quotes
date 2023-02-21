@@ -1,0 +1,27 @@
+GET http://localhost:3001/author
+
+###
+
+POST http://localhost:3001/author
+Content-Type: application/json
+
+{
+  "name": "Joe Doe",
+  "age": 21,
+  "country": "USA"
+}
+
+###
+
+PUT http://localhost:3001/author/ba87a9d4-ed62-4b80-9e03-a0a5c2aed491
+Content-Type: application/json
+
+{
+  "name": "Foo Bar",
+  "age": 30,
+  "country": "Brazil"
+}
+
+###
+
+DELETE http://localhost:3001/author/ba87a9d4-ed62-4b80-9e03-a0a5c2aed491
