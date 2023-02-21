@@ -51,6 +51,18 @@ const quoteMock = {
   updatedAt: new Date()
 }
 
+const quotesMock = [
+  quoteMock,
+  {
+    id: '654',
+    text: 'Another amazing quote!',
+    author: 'Joe Doe',
+    length: 22,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+]
+
 module.exports = {
   authorDbHandlerMock,
   authorInfoMock,
@@ -58,5 +70,6 @@ module.exports = {
   authorsMock,
   quoteDbHandlerMock,
   quoteInfoMock,
-  quoteMock
+  quoteMock,
+  quotesMock
 }
